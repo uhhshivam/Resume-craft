@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Create a professional resume for free with ResumeCraft. Build, preview and download your resume as a PDF.">
+<title>ResumeCraft - Free Resume Builder</title>
+
+<style>
+:root {
+  --primary: #2457d6;
+  --dark: #14213d;
+  --light: #f4f7fc;
+  --border: #e1e7f0;
+  --muted: #667085;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: var(--dark);
+  line-height: 1.5;
+}
+
+header {
+  background: white;
+  padding: 17px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.logo span {
+  color: var(--dark);
+}
+
+.header-tag {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hero {
+  text-align: center;
+  padding: 35px 15px 25px;
+}
+
+.hero h1 {
+  font-size: clamp(27px, 5vw, 40px);
+  margin-bottom: 8px;
+}
+
+.hero p {
+  color: var(--muted);
+}
+
+.container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  padding: 23px;
+  box-shadow: 0 4px 18px rgba(20,33,61,.04);
+}
+
+.panel h2 {
+  font-size: 21px;
+  margin-bottom: 18px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 22px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d6deeb;
+  border-radius: 7px;
+  margin-bottom: 13px;
+  font: inherit;
+  font-size: 14px;
+  background: white;
+  color: var(--dark);
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid #b9ccff;
+  border-color: var(--primary);
+}
+
+textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: -8px;
+  margin-bottom: 12px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+button {
+  border: 0;
+  border-radius: 7px;
+  padding: 12px 17px;
+  background: var(--primary);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: .9;
+}
+
+.secondary {
+  background: #eaf0ff;
+  color: var(--primary);
+}
+
+.preview-panel {
+  position: sticky;
+  top: 12px;
+}
+
+.resume {
+  background: white;
+  min-height: 650px;
+  padding: 35px;
+  border: 1px solid var(--border);
+  color: #252e40;
+  overflow-wrap: anywhere;
+}
+
+.resume-header {
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 17px;
+  margin-bottom: 20px;
+}
+
+.resume-header h1 {
+  font-size: 29px;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 7px;
+}
+
+.resume-contact {
+  color: #596579;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 13px;
+}
+
+.resume-section {
+  margin-bottom: 20px;
+}
+
+.resume-section h3 {
+  color: var(--primary);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #dce3f0;
+  padding-bottom: 6px;
+  margin-bottom: 9px;
+}
+
+.resume-section p {
+  font-size: 13px;
+  white-space: pre-line;
+}
+
+.resume-section ul {
+  padding-left: 19px;
+  font-size: 13px;
+}
+
+.resume-section li {
+  margin-bottom: 4px;
+}
+
+.resume-item {
+  margin-bottom: 12px;
+}
+
+.resume-item strong {
+  font-size: 14px;
+}
+
+.resume-item small {
+  display: block;
+  color: #657087;
+  font-size: 12px;
+}
+
+.empty {
+  color: #98a2b3;
+  font-style: italic;
+}
+
+footer {
+  text-align: center;
+  padding: 28px 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media(max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    position: static;
+  }
+
+  .panel {
+    padding: 17px;
+  }
+
+  .resume {
+    padding: 23px;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  body {
+    background: white;
+  }
+
+  header, .hero, #editor, footer,
+  .preview-panel > h2,
+  .preview-panel > .buttons,
+  .preview-panel > p {
+    display: none !important;
+  }
+
+  .container {
+    display: block;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+  }
+
+  .preview-panel, .panel {
+    display: block;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .resume {
+    border: 0;
+    padding: 0;
+    min-height: 0;
+    overflow: visible;
+  }
+
+  .resume-section, .resume-item {
+    break-inside: avoid;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Resume<span>Craft</span></div>
+  <div class="header-tag">Free Online Resume Builder</div>
+</header>
+
+<section class="hero">
+  <h1>Create Your Professional Resume</h1>
+  <p>Enter your details, preview your resume and download it as a PDF.</p>
+</section>
+
+<main class="container">
+
+<section class="panel" id="editor">
+  <h2>Build Your Resume</h2>
+
+  <div class="section-title">Personal Information</div>
+
+  <label for="name">Full Name</label>
+  <input id="name" placeholder="e.g. Shivam Parmar">
+
+  <label for="job">Professional Title</label>
+  <input id="job" placeholder="e.g. Web Developer">
+
+  <label for="email">Email Address</label>
+  <input id="email" type="email" placeholder="example@email.com">
+
+  <label for="phone">Phone Number</label>
+  <input id="phone" type="tel" placeholder="+91 9876543210">
+
+  <label for="location">Location</label>
+  <input id="location" placeholder="City, Country">
+
+  <label for="website">LinkedIn / Portfolio (optional)</label>
+  <input id="website" placeholder="Your profile or website URL">
+
+  <div class="section-title">Professional Summary</div>
+  <label for="summary">About You</label>
+  <textarea id="summary" placeholder="Write a short professional introduction..."></textarea>
+
+  <div class="section-title">Education</div>
+  <label for="degree">Degree / Qualification</label>
+  <input id="degree" placeholder="e.g. B.Tech, B.Com, Class 12">
+
+  <label for="school">School / College</label>
+  <input id="school" placeholder="Institution name">
+
+  <label for="year">Year / Duration</label>
+  <input id="year" placeholder="e.g. 2024 - 2027">
+
+  <label for="educationDetails">Additional Education Details</label>
+  <textarea id="educationDetails" placeholder="Marks, subjects, achievements..."></textarea>
+
+  <div class="section-title">Work Experience</div>
+  <label for="position">Job Title</label>
+  <input id="position" placeholder="e.g. Junior Designer">
+
+  <label for="company">Company</label>
+  <input id="company" placeholder="Company name">
+
+  <label for="duration">Duration</label>
+  <input id="duration" placeholder="e.g. Jan 2025 - Present">
+
+  <label for="workDetails">Responsibilities / Achievements</label>
+  <textarea id="workDetails" placeholder="Describe your work and achievements..."></textarea>
+  <p class="hint">No work experience? Leave these fields blank.</p>
+
+  <div class="section-title">Skills</div>
+  <label for="skills">Your Skills</label>
+  <textarea id="skills" placeholder="HTML, CSS, Python, Communication..."></textarea>
+  <p class="hint">Separate skills with commas.</p>
+
+  <div class="section-title">Projects (Optional)</div>
+  <label for="projects">Projects and Achievements</label>
+  <textarea id="projects" placeholder="Project name and a short description..."></textarea>
+
+  <div class="buttons">
+    <button type="button" onclick="downloadPDF()">Download PDF</button>
+    <button type="button" class="secondary" onclick="resetForm()">Clear Form</button>
+  </div>
+</section>
+
+<section class="panel preview-panel">
+  <h2>Live Resume Preview</h2>
+  <p class="hint">Your resume updates as you type.</p>
+
+  <article class="resume" id="resume">
+
+    <div class="resume-header">
+      <h1 id="p-name">Your Name</h1>
+      <div id="p-job" class="empty">Your Professional Title</div>
+      <div class="resume-contact" id="p-contact">
+        <span>Email</span>
+      </div>
+    </div>
+
+    <section class="resume-section" id="summary-section">
+      <h3>Professional Summary</h3>
+      <p id="p-summary" class="empty">Your professional summary will appear here.</p>
+    </section>
+
+    <section class="resume-section" id="education-section">
+      <h3>Education</h3>
+      <div id="p-education" class="empty">Your education details will appear here.</div>
+    </section>
+
+    <section class="resume-section" id="experience-section">
+      <h3>Work Experience</h3>
+      <div id="p-experience" class="empty">Your work experience will appear here.</div>
+    </section>
+
+    <section class="resume-section" id="skills-section">
+      <h3>Skills</h3>
+      <div id="p-skills" class="empty">Your skills will appear here.</div>
+    </section>
+
+    <section class="resume-section" id="projects-section">
+      <h3>Projects & Achievements</h3>
+      <p id="p-projects" class="empty">Your projects will appear here.</p>
+    </section>
+
+  </article>
+
+  <div class="buttons">
+    <button type="button" onclick="downloadPDF()">Download Resume PDF</button>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>ResumeCraft © 2026 | Build your future, one resume at a time.</p>
+  <p>Free resume creation for everyone.</p>
+</footer>
+
+<script>
+const fields = [
+  "name", "job", "email", "phone", "location", "website",
+  "summary", "degree", "school", "year", "educationDetails",
+  "position", "company", "duration", "workDetails",
+  "skills", "projects"
+];
+
+function getValue(id) {
+  return document.getElementById(id).value.trim();
+}
+
+function escapeHTML(value) {
+  return value.replace(/[&<>"']/g, character => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[character]);
+}
+
+function setText(id, value, fallback) {
+  const element = document.getElementById(id);
+  element.textContent = value || fallback;
+  element.classList.toggle("empty", !value);
+}
+
+function updateResume() {
+  setText("p-name", getValue("name"), "Your Name");
+  setText("p-job", getValue("job"), "Your Professional Title");
+  setText("p-summary", getValue("summary"), "Your professional summary will appear here.");
+  setText("p-projects", getValue("projects"), "Your projects will appear here.");
+
+  const contact = [
+    getValue("email"),
+    getValue("phone"),
+    getValue("location"),
+    getValue("website")
+  ].filter(Boolean);
+
+  const contactBox = document.getElementById("p-contact");
+  contactBox.replaceChildren();
+
+  if (contact.length) {
+    contact.forEach(item => {
+      const span = document.createElement("span");
+      span.textContent = item;
+      contactBox.appendChild(span);
+    });
+  } else {
+    const span = document.createElement("span");
+    span.textContent = "Your contact details";
+    span.className = "empty";
+    contactBox.appendChild(span);
+  }
+
+  const education = [
+    getValue("degree"),
+    getValue("school"),
+    getValue("year"),
+    getValue("educationDetails")
+  ].filter(Boolean);
+
+  const educationBox = document.getElementById("p-education");
+  educationBox.replaceChildren();
+
+  if (education.length) {
+    const div = document.createElement("div");
+    div.className = "resume-item";
+    education.forEach((item, index) => {
+      const p = document.createElement(index === 0 ? "strong" : "p");
+      p.textContent = item;
+      div.appendChild(p);
+    });
+    educationBox.appendChild(div);
+  } else {
+    educationBox.textContent = "Your education details will appear here.";
+    educationBox.className = "empty";
+  }
+
+  const experience = [
+    getValue("position"),
+    getValue("company"),
+    getValue("duration"),
+    getValue("workDetails")
+  ].filter(Boolean);
+
+  const experienceBox = document.getElementById("p-experience");
+  experienceBox.replaceChildren();
+
+  if (experience.length) {
+    const div = document.createElement("div");
+    div.className = "resume-item";
+    experience.forEach((item, index) => {
+      const p = document.createElement(index === 0 ? "strong" : "p");
+      p.textContent = item;
+      div.appendChild(p);
+    });
+    experienceBox.appendChild(div);
+  } else {
+    experienceBox.textContent = "Your work experience will appear here.";
+    experienceBox.className = "empty";
+  }
+
+  const skills = getValue("skills")
+    .split(",")
+    .map(skill => skill.trim())
+    .filter(Boolean);
+
+  const skillsBox = document.getElementById("p-skills");
+  skillsBox.replaceChildren();
+
+  if (skills.length) {
+    const ul = document.createElement("ul");
+    skills.forEach(skill => {
+      const li = document.createElement("li");
+      li.textContent = skill;
+      ul.appendChild(li);
+    });
+    skillsBox.appendChild(ul);
+  } else {
+    skillsBox.textContent = "Your skills will appear here.";
+    skillsBox.className = "empty";
+  }
+}
+
+function downloadPDF() {
+  if (!getValue("name")) {
+    alert("Please enter your full name first.");
+    document.getElementById("name").focus();
+    return;
+  }
+
+  window.print();
+}
+
+function resetForm() {
+  if (!confirm("Clear all your resume information?")) return;
+
+  fields.forEach(id => {
+    document.getElementById(id).value = "";
+  });
+
+  updateResume();
+}
+
+fields.forEach(id => {
+  document.getElementById(id).addEventListener("input", updateResume);
+});
+
+updateResume();
+</script>
+
+</body>
+</html>
