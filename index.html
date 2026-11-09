@@ -310,6 +310,55 @@ footer {
     break-inside: avoid;
   }
 }
+  /* RESUMECRAFT VERSION 2 TEMPLATES */
+
+#resume.classic {
+  --primary: #222;
+  --dark: #111;
+  font-family: Georgia, serif;
+}
+
+#resume.classic .resume-header {
+  border-bottom: 2px solid #222;
+  text-align: center;
+}
+
+#resume.classic .resume-section h3 {
+  color: #222;
+  border-bottom: 1px solid #555;
+}
+
+#resume.executive {
+  --primary: #17365d;
+  --dark: #10243a;
+}
+
+#resume.executive .resume-header {
+  background: #17365d;
+  color: white;
+  padding: 24px;
+  border-bottom: 5px solid #7896b8;
+}
+
+#resume.executive .resume-header h1,
+#resume.executive .resume-header .resume-contact,
+#resume.executive .resume-header #p-job {
+  color: white;
+}
+
+#resume.executive .resume-section h3 {
+  color: #17365d;
+  border-bottom: 2px solid #17365d;
+}
+
+#template-select {
+  width: 100%;
+  padding: 11px;
+  margin: 10px 0 18px;
+  border: 1px solid #d6deeb;
+  border-radius: 7px;
+  background: white;
+}
 </style>
 </head>
 
@@ -608,6 +657,18 @@ fields.forEach(id => {
 });
 
 updateResume();
+  const templateSelect =
+  document.getElementById("template-select");
+
+templateSelect.addEventListener("change", function() {
+  const resume = document.getElementById("resume");
+
+  resume.classList.remove("classic", "executive");
+
+  if (this.value !== "modern") {
+    resume.classList.add(this.value);
+  }
+});
 </script>
 
 </body>
